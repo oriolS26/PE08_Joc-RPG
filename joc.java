@@ -97,6 +97,51 @@ public class joc {
     }
     public void combat() {
 
+        if(personatges.size() < 2) {
+        System.out.println("Calen almenys 2 personatges.");
+        return;
+        }
+        for (int i = 0; i < personatges.size(); i++) {
+        System.out.println(i + " - " + personatges.get(i).getNom());
+        }
+        System.out.print("Jugador 1 tria personatge: ");
+    personatge p1 = personatges.get(sc.nextInt());
+
+    System.out.print("Jugador 2 tria personatge: ");
+    personatge p2 = personatges.get(sc.nextInt());
+
+    boolean combatActiu = true;
+
+    while (combatActiu) {
+
+        if (p1.estaViu() && p2.estaViu()) {
+            torn(p1, p2);
+        }
+
+        if (p1.estaViu() && p2.estaViu()) {
+            torn(p2, p1);
+        }
+
+        p1.regenerarVida();
+        p2.regenerarVida();
+
+        p1.regenerarMana();
+        p2.regenerarMana();
+
+        if (!p1.estaViu() || !p2.estaViu()) {
+            combatActiu = false;
+        }
+
+        System.out.println("\nESTAT PERSONATGES:");
+        System.out.println(p1);
+        System.out.println(p2);
+    }
+
+    if (p1.estaViu()) {
+        System.out.println("Guanya " + p1.getNom());
+    } else {
+        System.out.println("Guanya " + p2.getNom());
+    }
     }
     public void torn(personatge atacant, personatge defensor) {
 

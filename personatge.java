@@ -141,6 +141,10 @@ public class personatge {
         System.out.println("Habilitat especial activada! Proxim atac x2!");
     }
     
+    public boolean estaViu() {
+    return salut > 0;
+    }
+    
      public String toString() {
 
         return nom + " | Vida: " + salut + "/" + salutMax +
