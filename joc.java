@@ -34,7 +34,66 @@ public class joc {
         } while (op != 0);
     }
     public void crearPersonatge() {
+        sc.nextLine();
 
+        System.out.print("Nom: ");
+        String nom = sc.nextLine();
+
+        System.out.print("Edat: ");
+        int edat = sc.nextInt();
+
+        System.out.println("1. Manual");
+        System.out.println("2. Automatic");
+
+        int tipus = sc.nextInt();
+
+        int forca, destresa, constitucio, inteligencia, saviesa, carisma;
+
+        if (tipus == 1) {
+
+            System.out.print("Força: ");
+            forca = sc.nextInt();
+
+            System.out.print("Destresa: ");
+            destresa = sc.nextInt();
+
+            System.out.print("Constitucio: ");
+            constitucio = sc.nextInt();
+
+            System.out.print("Inteligencia: ");
+            inteligencia = sc.nextInt();
+
+            System.out.print("Saviesa: ");
+            saviesa = sc.nextInt();
+
+            System.out.print("Carisma: ");
+            carisma = sc.nextInt();
+
+        } else {
+
+            forca = destresa = constitucio = inteligencia = saviesa = carisma = 5;
+            int puntsRestants = 30;
+
+            Random r = new Random();
+
+            while (puntsRestants > 0) {
+
+                int opcio = r.nextInt(6);
+
+                if (opcio == 0 && forca < 20) { forca++; puntsRestants--; }
+                else if (opcio == 1 && destresa < 20) { destresa++; puntsRestants--; }
+                else if (opcio == 2 && constitucio < 20) { constitucio++; puntsRestants--; }
+                else if (opcio == 3 && inteligencia < 20) { inteligencia++; puntsRestants--; }
+                else if (opcio == 4 && saviesa < 20) { saviesa++; puntsRestants--; }
+                else if (opcio == 5 && carisma < 20) { carisma++; puntsRestants--; }
+            }
+        }
+
+        personatge p = new personatge(nom, edat, forca, destresa, constitucio, inteligencia, saviesa, carisma);
+
+        personatges.add(p);
+
+        System.out.println("personatge creat!");
     }
     public void combat() {
 
